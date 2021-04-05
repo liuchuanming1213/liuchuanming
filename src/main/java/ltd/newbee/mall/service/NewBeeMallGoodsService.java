@@ -71,7 +71,7 @@ public interface NewBeeMallGoodsService {
      */
     PageResult searchNewBeeMallGoods(PageQueryUtil pageUtil);
     
-//    2021/04/05 显示手机排序 
+//    2021/04/05 显示手机分类排序  Service层接口 
     /**
      * 商品搜索 cell phone
      *

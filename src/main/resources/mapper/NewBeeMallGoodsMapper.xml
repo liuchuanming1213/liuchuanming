@@ -416,7 +416,9 @@
 		where goods_id = #{goodsId,jdbcType=BIGINT}
 	</update>
 	
-	<!--2021/04/05 liuchuanming 手机页面排序　sql文-->
+	<!--2021/04/05  手机分类排序　sql文 从数据库tb_newbee_mall_goods_info表里取出
+	 goods_category_id = 46华为 goods_category_id = 51小米 goods_category_id = 47苹果
+	  并且limit 5个来显示 -->
 	<select id="searchSecondLevel" parameterType="Map"
 		resultMap="BaseResultMap">
 		select goods_id,

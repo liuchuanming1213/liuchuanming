@@ -35,7 +35,7 @@ public interface NewBeeMallGoodsMapper {
     int getTotalNewBeeMallGoods(PageQueryUtil pageUtil);
 
     List<NewBeeMallGoods> selectByPrimaryKeys(List<Long> goodsIds);
-    // 进 src/main/resources/NewBeeMallGoodsMapper.xml 113行
+    // 进 src/main/resources/NewBeeMallGoodsMapper.xml 113行查看
     List<NewBeeMallGoods> findNewBeeMallGoodsListBySearch(PageQueryUtil pageUtil);
 
     int getTotalNewBeeMallGoodsBySearch(PageQueryUtil pageUtil);
@@ -46,7 +46,7 @@ public interface NewBeeMallGoodsMapper {
 
     int batchUpdateSellStatus(@Param("orderIds")Long[] orderIds,@Param("sellStatus") int sellStatus);
   
-    //2021/04/05 手机排序
+    //2021/04/05 手机分类排序 Mapper层
     List<NewBeeMallGoods> searchSecondLevel(PageQueryUtil pageUtil);
     
 }

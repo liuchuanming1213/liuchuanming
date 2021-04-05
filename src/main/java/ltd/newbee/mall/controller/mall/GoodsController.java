@@ -73,7 +73,7 @@ public class GoodsController {
 		return "mall/search";
 	}
 
-	// 2021/04/05 手机排序 
+	// 2021/04/05 手机分类排序 排序 searchSecondLevel方法
 	@GetMapping({ "/secondLevelCategory", "/search.html" })
 	public String searchCommonPage(@RequestParam Map<String, Object> params, HttpServletRequest request) {
 		if (StringUtils.isEmpty(params.get("page"))) {
@@ -83,7 +83,7 @@ public class GoodsController {
 
 		// 搜索上架状态下的商品
 		params.put("goodsSellStatus", Constants.SELL_STATUS_UP);
-		// 封装商品数据 PageQueryUtil（map）
+		// 封装商品数据 PageQueryUtil（map对象）
 		PageQueryUtil pageUtil = new PageQueryUtil(params);
 		// 执行查询语句 searchNewBeeMallGoods	
 		request.setAttribute("pageResult", newBeeMallGoodsService.searchSecondLevel(pageUtil));

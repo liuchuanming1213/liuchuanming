@@ -107,7 +107,7 @@ public class NewBeeMallGoodsServiceImpl implements NewBeeMallGoodsService {
         return pageResult;
     }
 
-  //2021/04/05 Service接口 手机排序 
+  //2021/04/05 Service层 手机分类排序 
     @Override 
     public PageResult searchSecondLevel(PageQueryUtil pageUtil) {
     	// 重点    	

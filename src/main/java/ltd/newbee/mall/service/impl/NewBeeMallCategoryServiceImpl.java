@@ -157,7 +157,6 @@ public class NewBeeMallCategoryServiceImpl implements NewBeeMallCategoryService 
 	@Override
 	public SearchPageCategoryVO getCategoriesForSearch(Long categoryId) {
 		SearchPageCategoryVO searchPageCategoryVO = new SearchPageCategoryVO();
-		//　	通过goodsCategoryMapper（dao）里面的selectByPrimaryKey方法 参数是categoryId
 		GoodsCategory thirdLevelGoodsCategory = goodsCategoryMapper.selectByPrimaryKey(categoryId);
 		// 传三级分类的id
 		if (thirdLevelGoodsCategory != null
