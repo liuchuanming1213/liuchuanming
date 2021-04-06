@@ -132,7 +132,7 @@ public class NewBeeMallGoodsServiceImpl implements NewBeeMallGoodsService {
                 }
             }
         }
-        // 所有数据封装了一下传给前端 templates/mall/search.html   
+        // 所有数据封装了一下传给了前端 templates/mall/search.html   
         PageResult pageResult = new PageResult(newBeeMallSearchGoodsVOS, total, pageUtil.getLimit(), pageUtil.getPage());
         return pageResult;
     }
