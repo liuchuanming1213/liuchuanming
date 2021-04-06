@@ -17,6 +17,10 @@ import java.util.List;
 public class NewBeeMallGoodsDetailVO implements Serializable {
 
     private Long goodsId;
+//    0406 图片搜索
+    private String goodsImg;
+    
+    private Byte decide;
 
     private String goodsName;
 
@@ -95,4 +99,22 @@ public class NewBeeMallGoodsDetailVO implements Serializable {
     public void setGoodsCarouselList(String[] goodsCarouselList) {
         this.goodsCarouselList = goodsCarouselList;
     }
+
+
+
+	public String getGoodsImg() {
+		return goodsImg;
+	}
+
+	public void setGoodsImg(String goodsImg) {
+		this.goodsImg = goodsImg;
+	}
+
+	public Byte getDecide() {
+		return decide;
+	}
+
+	public void setDecide(Byte decide) {
+		this.decide = decide;
+	}
 }

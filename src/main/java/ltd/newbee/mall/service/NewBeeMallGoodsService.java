@@ -13,6 +13,7 @@ import ltd.newbee.mall.util.PageQueryUtil;
 import ltd.newbee.mall.util.PageResult;
 
 import java.util.List;
+import java.util.Map;
 
 public interface NewBeeMallGoodsService {
     /**
@@ -80,4 +81,11 @@ public interface NewBeeMallGoodsService {
      */
     PageResult searchSecondLevel(PageQueryUtil pageUtil);
     
+//	2021/04/06 图片搜索
+    /**
+     * 
+     * @param goodsId
+     * @return
+     */
+    PageResult searchGoodsImg(Long goodsId);
 }

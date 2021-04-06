@@ -16,7 +16,11 @@ import java.io.Serializable;
 public class NewBeeMallSearchGoodsVO implements Serializable {
 	// 实体类 用NewBeeMallSearchGoodsVO精简了？	
     private Long goodsId;
-
+    // 0406 搜索图片
+    private String goodsImg;
+    
+    private Byte decide;
+    
     private String goodsName;
 
     private String goodsIntro;
@@ -64,4 +68,20 @@ public class NewBeeMallSearchGoodsVO implements Serializable {
     public void setSellingPrice(Integer sellingPrice) {
         this.sellingPrice = sellingPrice;
     }
+
+	public String getGoodsImg() {
+		return goodsImg;
+	}
+
+	public void setGoodsImg(String goodsImg) {
+		this.goodsImg = goodsImg;
+	}
+
+	public Byte getDecide() {
+		return decide;
+	}
+
+	public void setDecide(Byte decide) {
+		this.decide = decide;
+	}
 }

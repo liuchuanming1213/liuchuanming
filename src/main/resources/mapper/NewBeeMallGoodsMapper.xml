@@ -453,4 +453,17 @@
 		order by selling_price limit 5)
 		) as temp
 	</select>
+	<!--2021/04/06 sql文抽出大图与小图-->
+	 <select id="searchWideImg" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select 
+		goods_img
+        from tb_newbee_mall_image
+        where goods_id = 10697 and decide = 0
+    </select>
+    <select id="searchSmallImg" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        goods_img
+        from tb_newbee_mall_image
+        where goods_id = 10697 and decide = 1
+    </select>
 </mapper>

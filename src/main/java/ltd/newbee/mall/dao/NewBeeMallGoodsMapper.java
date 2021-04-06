@@ -9,6 +9,7 @@
 package ltd.newbee.mall.dao;
 
 import ltd.newbee.mall.entity.NewBeeMallGoods;
+
 import ltd.newbee.mall.entity.StockNumDTO;
 import ltd.newbee.mall.util.PageQueryUtil;
 import org.apache.ibatis.annotations.Param;
@@ -46,7 +47,13 @@ public interface NewBeeMallGoodsMapper {
 
     int batchUpdateSellStatus(@Param("orderIds")Long[] orderIds,@Param("sellStatus") int sellStatus);
   
-    //2021/04/05 手机分类排序 Mapper层
+    //04/05 手机分类排序 Mapper层
     List<NewBeeMallGoods> searchSecondLevel(PageQueryUtil pageUtil);
+    
+    //0406 搜索图片
+    List<NewBeeMallGoods> searchWideImg(Long goodsId);
+
+    List<NewBeeMallGoods> searchSmallImg(Long goodsId);
+
     
 }

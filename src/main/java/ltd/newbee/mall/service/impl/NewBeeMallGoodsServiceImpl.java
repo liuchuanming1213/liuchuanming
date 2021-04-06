@@ -136,4 +136,16 @@ public class NewBeeMallGoodsServiceImpl implements NewBeeMallGoodsService {
         PageResult pageResult = new PageResult(newBeeMallSearchGoodsVOS, total, pageUtil.getLimit(), pageUtil.getPage());
         return pageResult;
     }
+    // 2021/04/06 搜索图片
+//    @Override
+//    public PageResult searchGoodsImg(Long goodsId) {
+//    	 List<GoodsImg> goodsImgList = new ArrayList<GoodsImg>();
+//    	 return pageResult;
+//    	
+
+@Override
+public PageResult searchGoodsImg(Long goodsId) {
+	// TODO Auto-generated method stub
+	return null;
 }
+    }
