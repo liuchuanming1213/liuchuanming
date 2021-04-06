@@ -73,7 +73,7 @@ public class GoodsController {
 		return "mall/search";
 	}
 
-	// 2021/04/05 手机分类排序 排序 searchSecondLevel方法
+	// 2021/04/06 手机分类排序 排序 searchSecondLevel方法
 	@GetMapping({ "/secondLevelCategory", "/search.html" })
 	public String searchCommonPage(@RequestParam Map<String, Object> params, HttpServletRequest request) {
 		if (StringUtils.isEmpty(params.get("page"))) {
