@@ -41,9 +41,9 @@
 		goods_id, goods_name, goods_intro,goods_category_id, goods_cover_img,
 		goods_carousel, original_price,
 		selling_price, stock_num, tag, goods_sell_status, create_user, create_time,
-		update_user,
-		update_time
+		update_user,update_time
 	</sql>
+
 	<sql id="Blob_Column_List">
 		goods_detail_content
 	</sql>
@@ -454,16 +454,10 @@
 		) as temp
 	</select>
 	<!--2021/04/06 sql文抽出大图与小图-->
-	 <select id="searchWideImg" parameterType="java.lang.Long" resultMap="BaseResultMap">
+	 <select id="searchGoodsImg" parameterType="java.lang.Long" resultMap="BaseResultMap">
         select 
-		goods_img
+		 <include refid="Base_Img_List"/>
         from tb_newbee_mall_image
-        where goods_id = 10697 and decide = 0
-    </select>
-    <select id="searchSmallImg" parameterType="java.lang.Long" resultMap="BaseResultMap">
-        select
-        goods_img
-        from tb_newbee_mall_image
-        where goods_id = 10697 and decide = 1
+        where goods_id = #{goodsId,jdbcType=BIGINT} and decide = #{decide,jdbcType=VARCHAR}
     </select>
 </mapper>

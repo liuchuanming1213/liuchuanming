@@ -26,6 +26,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -68,7 +70,7 @@ public class GoodsController {
 		params.put("keyword", keyword);
 		// 搜索上架状态下的商品
 		params.put("goodsSellStatus", Constants.SELL_STATUS_UP);
-		PageQueryUtil pageUtil = new PageQueryUtil(params);	
+		PageQueryUtil pageUtil = new PageQueryUtil(params);
 		request.setAttribute("pageResult", newBeeMallGoodsService.searchNewBeeMallGoods(pageUtil));
 		return "mall/search";
 	}
@@ -85,27 +87,48 @@ public class GoodsController {
 		params.put("goodsSellStatus", Constants.SELL_STATUS_UP);
 		// 封装商品数据 PageQueryUtil（map对象）
 		PageQueryUtil pageUtil = new PageQueryUtil(params);
-		// 执行查询语句 searchNewBeeMallGoods	
+		// 执行查询语句 searchNewBeeMallGoods
 		request.setAttribute("pageResult", newBeeMallGoodsService.searchSecondLevel(pageUtil));
 
 		return "mall/search";
 	}
+
 	@GetMapping("/goods/detail/{goodsId}")
-    public String detailPage(@PathVariable("goodsId") Long goodsId, HttpServletRequest request) {
-        if (goodsId < 1) {
-            return "error/error_5xx";
-        }
-        NewBeeMallGoods goods = newBeeMallGoodsService.getNewBeeMallGoodsById(goodsId);
-        if (goods == null) {
-            NewBeeMallException.fail(ServiceResultEnum.GOODS_NOT_EXIST.getResult());
-        }
-        if (Constants.SELL_STATUS_UP != goods.getGoodsSellStatus()) {
-            NewBeeMallException.fail(ServiceResultEnum.GOODS_PUT_DOWN.getResult());
-        }
-        NewBeeMallGoodsDetailVO goodsDetailVO = new NewBeeMallGoodsDetailVO();
-        BeanUtil.copyProperties(goods, goodsDetailVO);
-        goodsDetailVO.setGoodsCarouselList(goods.getGoodsCarousel().split(","));
-        request.setAttribute("goodsDetail", goodsDetailVO);
-        return "mall/detail";
-    }
+	//商品goodsId小于1则没有此商品，大于则查询商品
+	public String detailPage(@PathVariable("goodsId") Long goodsId, HttpServletRequest request) {
+		if (goodsId < 1) {
+			return "error/error_5xx";
+		}
+
+		NewBeeMallGoods goods = newBeeMallGoodsService.getNewBeeMallGoodsById(goodsId);
+		
+		Map goodsImg = newBeeMallGoodsService.searchGoodsImg(goodsId);
+
+		if (goods == null) {
+			NewBeeMallException.fail(ServiceResultEnum.GOODS_NOT_EXIST.getResult());
+		}
+
+		if (Constants.SELL_STATUS_UP != goods.getGoodsSellStatus()) {
+			NewBeeMallException.fail(ServiceResultEnum.GOODS_PUT_DOWN.getResult());
+		}
+		//bigOrderBy为key取出所有大图片
+		List bigOrderBy = (List) goodsImg.get("bigOrderBy");
+		//bigOrderBy为key取出所有小图片
+		List smallOrderBy = (List) goodsImg.get("smallOrderBy");
+		
+		NewBeeMallGoodsDetailVO goodsDetailVO = new NewBeeMallGoodsDetailVO();
+		//更改格式返回给前台
+		BeanUtil.copyProperties(goods, goodsDetailVO);
+		List<NewBeeMallGoodsDetailVO> newBeeMallSearchGoodsBigVOS = BeanUtil.copyList(bigOrderBy,
+				NewBeeMallGoodsDetailVO.class);
+		List<NewBeeMallGoodsDetailVO> newBeeMallSearchGoodsSmallVOS = BeanUtil.copyList(smallOrderBy,
+				NewBeeMallGoodsDetailVO.class);
+		//数组用逗号分开，成为数组
+		goodsDetailVO.setGoodsCarouselList(goods.getGoodsCarousel().split(","));
+		//返回前台
+		request.setAttribute("goodsDetail", goodsDetailVO);
+		request.setAttribute("goodsBigImgDetail", newBeeMallSearchGoodsBigVOS);
+		request.setAttribute("goodsSmallImgDetail", newBeeMallSearchGoodsSmallVOS);
+		return "mall/detail";
+	}
 }

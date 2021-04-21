@@ -49,11 +49,8 @@ public interface NewBeeMallGoodsMapper {
   
     //04/05 手机分类排序 Mapper层
     List<NewBeeMallGoods> searchSecondLevel(PageQueryUtil pageUtil);
-    
-    //0406 搜索图片
-    List<NewBeeMallGoods> searchWideImg(Long goodsId);
-
-    List<NewBeeMallGoods> searchSmallImg(Long goodsId);
+  
+ 
 
     
 }

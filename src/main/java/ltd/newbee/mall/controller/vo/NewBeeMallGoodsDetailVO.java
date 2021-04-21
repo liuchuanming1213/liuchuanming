@@ -21,6 +21,8 @@ public class NewBeeMallGoodsDetailVO implements Serializable {
     private String goodsImg;
     
     private Byte decide;
+    
+    private Byte orderby;
 
     private String goodsName;
 
@@ -116,5 +118,13 @@ public class NewBeeMallGoodsDetailVO implements Serializable {
 
 	public void setDecide(Byte decide) {
 		this.decide = decide;
+	}
+
+	public Byte getOrderby() {
+		return orderby;
+	}
+
+	public void setOrderby(Byte orderby) {
+		this.orderby = orderby;
 	}
 }

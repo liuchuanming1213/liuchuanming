@@ -9,13 +9,14 @@
 package ltd.newbee.mall.service;
 
 import ltd.newbee.mall.entity.NewBeeMallGoods;
+import ltd.newbee.mall.entity.GoodsImg;
 import ltd.newbee.mall.util.PageQueryUtil;
 import ltd.newbee.mall.util.PageResult;
 
 import java.util.List;
 import java.util.Map;
 
-public interface NewBeeMallGoodsService {
+public interface NewBeeMallGoodsService{
     /**
      * 后台分页
      *
@@ -80,6 +81,8 @@ public interface NewBeeMallGoodsService {
      * @return
      */
     PageResult searchSecondLevel(PageQueryUtil pageUtil);
+
+	
     
 //	2021/04/06 图片搜索
     /**
@@ -87,5 +90,5 @@ public interface NewBeeMallGoodsService {
      * @param goodsId
      * @return
      */
-    PageResult searchGoodsImg(Long goodsId);
+    Map searchGoodsImg(Long goodsId);
 }

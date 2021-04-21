@@ -14,10 +14,6 @@ import java.util.Date;
 
 public class NewBeeMallGoods {
     private Long goodsId;
-    //0406 搜索图片
-    private String goodsImg;
- 
-    private Byte decide;
 
     private String goodsName;
 
@@ -204,20 +200,6 @@ public class NewBeeMallGoods {
         return sb.toString();
     }
 
-	public String getGoodsImg() {
-		return goodsImg;
-	}
-
-	public void setGoodsImg(String goodsImg) {
-		this.goodsImg = goodsImg;
-	}
-
-	public Byte getDecide() {
-		return decide;
-	}
-
-	public void setDecide(Byte decide) {
-		this.decide = decide;
-	}
+	
 
 }
